@@ -9,72 +9,184 @@
       box-sizing: border-box;
     }
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #1f1f1f;
+    :root {
+      --bg: #f4f1ec;
+      --card: rgba(255, 255, 255, 0.88);
+      --card-solid: #ffffff;
+      --text: #1f1a17;
+      --muted: #6f6760;
+      --line: rgba(31, 26, 23, 0.08);
+      --shadow: 0 18px 50px rgba(31, 26, 23, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+
+      --high-bg: #fff1f1;
+      --high-line: #c94b4b;
+      --high-badge-bg: #f9d8d8;
+      --high-badge-text: #8e2d2d;
+
+      --medium-bg: #fff8ec;
+      --medium-line: #d5972b;
+      --medium-badge-bg: #f6e2b8;
+      --medium-badge-text: #8b5b08;
+
+      --low-bg: #f2fbf4;
+      --low-line: #4f9b63;
+      --low-badge-bg: #cfead5;
+      --low-badge-text: #25613a;
+
+      --unknown-bg: #f4f4f5;
+      --unknown-line: #7c7c86;
+      --unknown-badge-bg: #e6e6ea;
+      --unknown-badge-text: #50505a;
     }
 
-    .container {
-      max-width: 820px;
-      margin: 60px auto;
-      background: white;
-      padding: 32px;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.8), transparent 32%),
+        linear-gradient(180deg, #f7f2ec 0%, #f1ede8 100%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 36px 18px 60px;
+    }
+
+    .shell {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: var(--shadow);
+      border-radius: 34px;
+      padding: 34px 30px;
+      backdrop-filter: blur(10px);
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #b7855d;
+      display: inline-block;
     }
 
     h1 {
-      margin-top: 0;
-      font-size: 2rem;
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      font-weight: 800;
     }
 
-    p {
-      color: #555;
-      line-height: 1.5;
+    .subtitle {
+      max-width: 740px;
+      margin-top: 16px;
+      font-size: 1.02rem;
+      line-height: 1.6;
+      color: var(--muted);
     }
 
-    .input-group {
-      display: flex;
-      gap: 12px;
-      margin-top: 24px;
-      flex-wrap: wrap;
+    .app-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      backdrop-filter: blur(10px);
+    }
+
+    .input-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 12px;
+      display: block;
     }
 
     textarea {
       width: 100%;
-      min-height: 110px;
-      padding: 14px 16px;
-      border: 1px solid #d0d0d0;
-      border-radius: 12px;
+      min-height: 132px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 18px;
       font-size: 1rem;
+      line-height: 1.6;
       resize: vertical;
-      font-family: Arial, sans-serif;
+      font-family: inherit;
+      color: var(--text);
+      background: rgba(255,255,255,0.82);
+      outline: none;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+    }
+
+    textarea:focus {
+      border-color: rgba(183, 133, 93, 0.7);
+      box-shadow: 0 0 0 4px rgba(183, 133, 93, 0.12);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .helper {
+      font-size: 0.96rem;
+      color: var(--muted);
+    }
+
+    .helper strong {
+      color: var(--text);
+      font-weight: 700;
     }
 
     button {
-      margin-top: 14px;
-      padding: 14px 20px;
       border: none;
-      border-radius: 12px;
-      background: #111827;
+      background: linear-gradient(135deg, #221c19, #4a3a31);
       color: white;
-      font-size: 1rem;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-size: 0.98rem;
+      font-weight: 700;
       cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 24px rgba(34, 28, 25, 0.2);
     }
 
     button:hover {
-      opacity: 0.92;
+      transform: translateY(-1px);
+      opacity: 0.96;
     }
 
     .summary-card {
-      margin-top: 28px;
-      padding: 20px;
-      border-radius: 16px;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
       display: none;
+      margin-top: 24px;
+      border-radius: 24px;
+      padding: 22px 22px;
+      border: 1px solid var(--line);
     }
 
     .summary-card.show {
@@ -82,32 +194,39 @@
     }
 
     .summary-card.high {
-      background: #fef2f2;
-      border-color: #fecaca;
+      background: var(--high-bg);
+      border-color: rgba(201, 75, 75, 0.18);
     }
 
     .summary-card.medium {
-      background: #fffbeb;
-      border-color: #fde68a;
+      background: var(--medium-bg);
+      border-color: rgba(213, 151, 43, 0.18);
     }
 
     .summary-card.low {
-      background: #f0fdf4;
-      border-color: #bbf7d0;
+      background: var(--low-bg);
+      border-color: rgba(79, 155, 99, 0.18);
+    }
+
+    .summary-card.unknown {
+      background: var(--unknown-bg);
+      border-color: rgba(124, 124, 134, 0.18);
     }
 
     .summary-title {
-      font-size: 0.85rem;
+      font-size: 0.76rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #666;
+      letter-spacing: 0.14em;
+      font-weight: 800;
+      color: var(--muted);
       margin-bottom: 8px;
-      font-weight: bold;
     }
 
     .summary-main {
-      font-size: 1.4rem;
       margin: 0;
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
     }
 
     .results {
@@ -117,121 +236,221 @@
     }
 
     .result-card {
+      border-radius: 24px;
       padding: 22px;
-      border-radius: 16px;
-      border-left: 8px solid #ccc;
-      background: #fafafa;
+      border: 1px solid var(--line);
+      background: var(--card-solid);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .result-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 6px;
+      border-radius: 10px;
     }
 
     .level-high {
-      border-left-color: #dc2626;
-      background: #fef2f2;
+      background: var(--high-bg);
+      border-color: rgba(201, 75, 75, 0.16);
+    }
+
+    .level-high::before {
+      background: var(--high-line);
     }
 
     .level-medium {
-      border-left-color: #d97706;
-      background: #fffbeb;
+      background: var(--medium-bg);
+      border-color: rgba(213, 151, 43, 0.16);
+    }
+
+    .level-medium::before {
+      background: var(--medium-line);
     }
 
     .level-low {
-      border-left-color: #16a34a;
-      background: #f0fdf4;
+      background: var(--low-bg);
+      border-color: rgba(79, 155, 99, 0.16);
+    }
+
+    .level-low::before {
+      background: var(--low-line);
     }
 
     .level-unknown {
-      border-left-color: #6b7280;
-      background: #f3f4f6;
+      background: var(--unknown-bg);
+      border-color: rgba(124, 124, 134, 0.16);
+    }
+
+    .level-unknown::before {
+      background: var(--unknown-line);
+    }
+
+    .top-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .badge {
-      display: inline-block;
-      padding: 6px 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
       border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: bold;
-      margin-bottom: 14px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .badge-high {
-      background: #fecaca;
-      color: #991b1b;
+      background: var(--high-badge-bg);
+      color: var(--high-badge-text);
     }
 
     .badge-medium {
-      background: #fde68a;
-      color: #92400e;
+      background: var(--medium-badge-bg);
+      color: var(--medium-badge-text);
     }
 
     .badge-low {
-      background: #bbf7d0;
-      color: #166534;
+      background: var(--low-badge-bg);
+      color: var(--low-badge-text);
     }
 
     .badge-unknown {
-      background: #e5e7eb;
-      color: #374151;
+      background: var(--unknown-badge-bg);
+      color: var(--unknown-badge-text);
+    }
+
+    .card-title {
+      margin: 10px 0 8px;
+      font-size: 1.32rem;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .code-pill {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(31,26,23,0.08);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #3d3631;
+      margin-top: 2px;
+    }
+
+    .sections {
+      margin-top: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .section-block {
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(31,26,23,0.06);
+      border-radius: 16px;
+      padding: 14px 15px;
     }
 
     .section-title {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #666;
-      margin-top: 18px;
-      margin-bottom: 6px;
-      font-weight: bold;
-    }
-
-    .main-alert {
-      font-size: 1.2rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
       margin: 0 0 8px;
+      font-weight: 800;
     }
 
-    .code-label {
-      margin-top: 10px;
-      font-weight: bold;
-      color: #333;
+    .section-text {
+      margin: 0;
+      line-height: 1.6;
+      color: #332d29;
     }
 
-    .helper {
-      margin-top: 12px;
-      font-size: 0.95rem;
-      color: #666;
+    .footer-note {
+      margin-top: 24px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 20px 14px 40px;
+      }
+
+      .hero,
+      .app-card {
+        padding: 22px;
+        border-radius: 24px;
+      }
+
+      h1 {
+        line-height: 1;
+      }
+
+      .toolbar {
+        align-items: stretch;
+      }
+
+      button {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Pigment Check Lite</h1>
-    <p>
-      Escribe uno o varios códigos Color Index para obtener alertas rápidas, explicación y recomendación
-      orientadas a micropigmentación.
-    </p>
+  <div class="shell">
+    <section class="hero">
+      <div class="eyebrow"><span class="dot"></span> Herramienta de análisis clínico</div>
+      <h1>Pigment Check Lite</h1>
+      <p class="subtitle">
+        Analiza uno o varios códigos Color Index y obtén una lectura rápida con jerarquía de riesgo,
+        explicación técnica y recomendación orientada a micropigmentación.
+      </p>
+    </section>
 
-    <div class="input-group">
+    <section class="app-card">
+      <label class="input-label" for="ciInput">Códigos para analizar</label>
       <textarea
         id="ciInput"
         placeholder="Ejemplo: CI 77007, CI 77891, CI 77266"
       ></textarea>
-    </div>
 
-    <button id="analyzeBtn">Analizar</button>
+      <div class="toolbar">
+        <div class="helper">
+          Puedes escribir varios códigos separados por comas, espacios o texto mixto.
+          <strong>Ejemplo:</strong> CI 77007, CI 77891, CI 77266
+        </div>
+        <button id="analyzeBtn">Analizar composición</button>
+      </div>
 
-    <p class="helper">Prueba con varios: CI 77007, CI 77891, CI 77266</p>
+      <div id="summaryCard" class="summary-card">
+        <div class="summary-title">Evaluación principal</div>
+        <h2 id="summaryText" class="summary-main"></h2>
+      </div>
 
-    <div id="summaryCard" class="summary-card">
-      <div class="summary-title">Evaluación principal</div>
-      <h2 id="summaryText" class="summary-main"></h2>
-    </div>
+      <div id="results" class="results"></div>
 
-    <div id="results" class="results"></div>
+      <div class="footer-note">
+        Versión educativa. La interpretación final siempre debe pasar por el criterio técnico del profesional.
+      </div>
+    </section>
   </div>
 
   <script>
     const rules = {
       "CI 77007": {
         level: "high",
-        levelText: "ALTO",
+        levelText: "Alto",
         alert: "Presencia de componente azul",
         explanation:
           "En micropigmentación de labios, este componente puede derivar en tonos fríos no deseados tras la cicatrización.",
@@ -240,7 +459,7 @@
       },
       "CI 77891": {
         level: "low",
-        levelText: "BAJO",
+        levelText: "Bajo",
         alert: "Dióxido de titanio detectado",
         explanation:
           "Puede usarse como opacificante o aclarador dentro de la fórmula del pigmento.",
@@ -249,7 +468,7 @@
       },
       "CI 77266": {
         level: "medium",
-        levelText: "MEDIO",
+        levelText: "Medio",
         alert: "Negro de carbón detectado",
         explanation:
           "Debe analizarse según la formulación completa, el procedimiento y el objetivo del resultado.",
@@ -285,29 +504,36 @@
       return 0;
     }
 
+    function getBadgeClass(level) {
+      if (level === "high") return "badge-high";
+      if (level === "medium") return "badge-medium";
+      if (level === "low") return "badge-low";
+      return "badge-unknown";
+    }
+
     function createCard(data, code) {
       const card = document.createElement("div");
       card.className = `result-card level-${data.level}`;
 
-      const badgeClass =
-        data.level === "high"
-          ? "badge-high"
-          : data.level === "medium"
-          ? "badge-medium"
-          : data.level === "low"
-          ? "badge-low"
-          : "badge-unknown";
-
       card.innerHTML = `
-        <div class="badge ${badgeClass}">Nivel ${data.levelText}</div>
-        <h2 class="main-alert">${data.alert}</h2>
-        <div class="code-label">Código analizado: ${code}</div>
+        <div class="top-row">
+          <div class="badge ${getBadgeClass(data.level)}">Nivel ${data.levelText}</div>
+        </div>
 
-        <div class="section-title">Explicación</div>
-        <p>${data.explanation}</p>
+        <h2 class="card-title">${data.alert}</h2>
+        <div class="code-pill">Código analizado: ${code}</div>
 
-        <div class="section-title">Recomendación</div>
-        <p>${data.recommendation}</p>
+        <div class="sections">
+          <div class="section-block">
+            <div class="section-title">Explicación</div>
+            <p class="section-text">${data.explanation}</p>
+          </div>
+
+          <div class="section-block">
+            <div class="section-title">Recomendación</div>
+            <p class="section-text">${data.recommendation}</p>
+          </div>
+        </div>
       `;
 
       return card;
@@ -325,25 +551,25 @@
       if (!codes.length) {
         const noCodeData = {
           level: "unknown",
-          levelText: "NO DEFINIDO",
+          levelText: "Sin regla",
           alert: "No se detectaron códigos",
-          explanation: "No se encontró ningún patrón válido tipo CI 12345.",
+          explanation: "No se encontró ningún patrón válido tipo CI 12345 dentro del texto ingresado.",
           recommendation: "Escribe uno o varios códigos como CI 77007, CI 77891 o CI 77266."
         };
 
         results.appendChild(createCard(noCodeData, "Sin código"));
-        summaryCard.classList.add("show");
+        summaryCard.classList.add("show", "unknown");
         summaryText.textContent = "No se encontraron códigos válidos para analizar.";
         return;
       }
 
-      let highestLevel = "low";
-      let highestPriority = 1;
+      let highestLevel = "unknown";
+      let highestPriority = 0;
 
       codes.forEach(code => {
         const result = rules[code] || {
           level: "unknown",
-          levelText: "SIN REGLA",
+          levelText: "Sin regla",
           alert: "Código no registrado",
           explanation: "Este código aún no está dentro de la base de reglas de esta versión.",
           recommendation: "Agrega este código a la base de reglas si deseas analizarlo en futuras versiones."
@@ -362,17 +588,23 @@
       summaryCard.classList.add("show", highestLevel);
 
       if (highestLevel === "high") {
-        summaryText.textContent = "Riesgo principal detectado: ALTO";
+        summaryText.textContent = "Riesgo principal detectado: Alto";
       } else if (highestLevel === "medium") {
-        summaryText.textContent = "Riesgo principal detectado: MEDIO";
+        summaryText.textContent = "Riesgo principal detectado: Medio";
       } else if (highestLevel === "low") {
-        summaryText.textContent = "Riesgo principal detectado: BAJO";
+        summaryText.textContent = "Riesgo principal detectado: Bajo";
       } else {
         summaryText.textContent = "No hay reglas registradas para los códigos analizados.";
       }
     }
 
     analyzeBtn.addEventListener("click", analyzeCI);
+
+    ciInput.addEventListener("keydown", function(event) {
+      if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+        analyzeCI();
+      }
+    });
   </script>
 </body>
 </html>
